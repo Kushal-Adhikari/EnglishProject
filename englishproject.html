@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libertarian vs Determinism</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .philosophy-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .philosophy-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .tab-active {
+            border-bottom: 3px solid #4F46E5;
+            font-weight: 600;
+            color: #4F46E5;
+        }
+        .comparison-highlight {
+            background: linear-gradient(90deg, rgba(79,70,229,0.1) 0%, rgba(79,70,229,0.05) 100%);
+            border-left: 4px solid #4F46E5;
+        }
+        .quote-bubble {
+            position: relative;
+            border-radius: 1rem;
+        }
+        .quote-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #E5E7EB transparent;
+        }
+        .determinist-bubble:after {
+            border-color: #F3F4F6 transparent;
+            right: 20px;
+            left: auto;
+        }
+        .compatibilist-bubble:after {
+            border-color: #ECFDF5 transparent;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-indigo-600 text-white">
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold">Philosophy Explorer</h1>
+            </div>
+            <div class="mt-12 text-center">
+                <h2 class="text-4xl font-bold mb-4">Free Will Debate</h2>
+                <p class="text-xl max-w-2xl mx-auto">Understanding the fundamental differences between Libertarianism and Determinism</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="flex flex-col md:flex-row gap-8 mb-12">
+            <!-- Libertarian Card -->
+            <div class="philosophy-card flex-1 bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-indigo-100 p-6">
+                    <div class="flex items-center">
+                        <div class="bg-indigo-600 text-white p-3 rounded-full">
+                            <i class="fas fa-dove text-xl"></i>
+                        </div>
+                        <h3 class="ml-4 text-2xl font-bold text-indigo-800">Libertarianism</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-4">
+                        Libertarians believe in <span class="font-semibold text-indigo-600">free will</span> - that individuals have the power to make genuine choices that are not determined by prior causes or divine will.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Humans possess genuine free will</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>Moral responsibility requires free will</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>The future is open and not predetermined</span>
+                        </li>
+                    </ul>
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <p class="italic text-indigo-800">
+                            "Man is condemned to be free; because once thrown into the world, he is responsible for everything he does."
+                        </p>
+                        <p class="text-right text-indigo-600 font-medium mt-2">— Jean-Paul Sartre</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Determinism Card -->
+            <div class="philosophy-card flex-1 bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-gray-100 p-6">
+                    <div class="flex items-center">
+                        <div class="bg-gray-600 text-white p-3 rounded-full">
+                            <i class="fas fa-cogs text-xl"></i>
+                        </div>
+                        <h3 class="ml-4 text-2xl font-bold text-gray-800">Determinism</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-4">
+                        Determinists argue that all events, including human cognition and behavior, are <span class="font-semibold text-gray-800">determined</span> by previously existing causes.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>Every event is necessitated by antecedent events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>Human choices are results of prior causes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>The future is as fixed as the past</span>
+                        </li>
+                    </ul>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <p class="italic text-gray-800">
+                            "The history of man, viewed as a whole, may be described as a gradual process of waking up to the truth that he is not free."
+                        </p>
+                        <p class="text-right text-gray-600 font-medium mt-2">— Arthur Schopenhauer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compatibilism Card -->
+            <div class="philosophy-card flex-1 bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="bg-emerald-100 p-6">
+                    <div class="flex items-center">
+                        <div class="bg-emerald-600 text-white p-3 rounded-full">
+                            <i class="fas fa-handshake text-xl"></i>
+                        </div>
+                        <h3 class="ml-4 text-2xl font-bold text-emerald-800">Compatibilism</h3>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-4">
+                        Compatibilists believe <span class="font-semibold text-emerald-800">free will and determinism are compatible</span> - that free will can exist even in a deterministic universe.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                            <span>Free will means acting according to one's motivations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                            <span>Determinism doesn't negate moral responsibility</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-2"></i>
+                            <span>Freedom is about lack of coercion, not uncaused actions</span>
+                        </li>
+                    </ul>
+                    <div class="bg-emerald-50 p-4 rounded-lg">
+                        <p class="italic text-emerald-800">
+                            "Free will is not the illusion, the illusion is the incompatibility of free will and determinism."
+                        </p>
+                        <p class="text-right text-emerald-600 font-medium mt-2">— Daniel Dennett</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Section -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-12">
+            <div class="border-b border-gray-200">
+                <div class="flex overflow-x-auto">
+                    <button onclick="changeTab('differences')" class="tab-button px-6 py-4 text-lg font-medium tab-active">
+                        <i class="fas fa-balance-scale mr-2"></i>Key Differences
+                    </button>
+                    <button onclick="changeTab('arguments')" class="tab-button px-6 py-4 text-lg font-medium">
+                        <i class="fas fa-comments mr-2"></i>Main Arguments
+                    </button>
+                    <button onclick="changeTab('thinkers')" class="tab-button px-6 py-4 text-lg font-medium">
+                        <i class="fas fa-user-tie mr-2"></i>Key Thinkers
+                    </button>
+                </div>
+            </div>
+            
+            <div id="differences" class="tab-content p-6">
+                <div class="space-y-6">
+                    <div class="comparison-highlight p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">Nature of Free Will</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 p-3 rounded-lg">
+                                <p class="font-medium text-indigo-700">Libertarian View:</p>
+                                <p>Humans have genuine free will and can make choices independent of prior causes.</p>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                                <p class="font-medium text-gray-700">Determinist View:</p>
+                                <p>Free will is an illusion; all choices are determined by prior causes.</p>
+                            </div>
+                            <div class="bg-emerald-50 p-3 rounded-lg">
+                                <p class="font-medium text-emerald-700">Compatibilist View:</p>
+                                <p>Free will exists when actions align with one's desires and intentions, even if determined.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-highlight p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">Moral Responsibility</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 p-3 rounded-lg">
+                                <p class="font-medium text-indigo-700">Libertarian View:</p>
+                                <p>Moral responsibility requires free will; we can praise/blame individuals for their choices.</p>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                                <p class="font-medium text-gray-700">Determinist View:</p>
+                                <p>Moral responsibility is compatible with determinism (compatibilism) or impossible (hard determinism).</p>
+                            </div>
+                            <div class="bg-emerald-50 p-3 rounded-lg">
+                                <p class="font-medium text-emerald-700">Compatibilist View:</p>
+                                <p>People are morally responsible when they act according to their character without external coercion.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-highlight p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">View of Causation</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-indigo-50 p-3 rounded-lg">
+                                <p class="font-medium text-indigo-700">Libertarian View:</p>
+                                <p>Some human actions are uncaused or self-caused by the agent.</p>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                                <p class="font-medium text-gray-700">Determinist View:</p>
+                                <p>All events, including human decisions, are caused by prior events in an unbroken chain.</p>
+                            </div>
+                            <div class="bg-emerald-50 p-3 rounded-lg">
+                                <p class="font-medium text-emerald-700">Compatibilist View:</p>
+                                <p>Human decisions are caused by internal motivations and reasoning processes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="arguments" class="tab-content p-6 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-indigo-700">Libertarian Arguments</h4>
+                        <div class="space-y-4">
+                            <div class="quote-bubble bg-indigo-50 p-4">
+                                <p class="font-medium">Experience of Choice</p>
+                                <p>Our direct experience of making choices suggests free will is real.</p>
+                            </div>
+                            <div class="quote-bubble bg-indigo-50 p-4 mt-6">
+                                <p class="font-medium">Moral Responsibility</p>
+                                <p>Without free will, concepts like praise, blame, and justice lose meaning.</p>
+                            </div>
+                            <div class="quote-bubble bg-indigo-50 p-4 mt-6">
+                                <p class="font-medium">Quantum Indeterminacy</p>
+                                <p>Modern physics shows the universe isn't completely deterministic at quantum levels.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-gray-700">Determinist Arguments</h4>
+                        <div class="space-y-4">
+                            <div class="quote-bubble determinist-bubble bg-gray-100 p-4">
+                                <p class="font-medium">Causal Closure</p>
+                                <p>Every physical event has a physical cause, leaving no room for free will.</p>
+                            </div>
+                            <div class="quote-bubble determinist-bubble bg-gray-100 p-4 mt-6">
+                                <p class="font-medium">Neuroscience</p>
+                                <p>Brain studies show decisions are made before we're consciously aware of them.</p>
+                            </div>
+                            <div class="quote-bubble determinist-bubble bg-gray-100 p-4 mt-6">
+                                <p class="font-medium">Predictability</p>
+                                <p>Human behavior is largely predictable based on genetics and environment.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-emerald-700">Compatibilist Arguments</h4>
+                        <div class="space-y-4">
+                            <div class="quote-bubble compatibilist-bubble bg-emerald-50 p-4">
+                                <p class="font-medium">Practical Freedom</p>
+                                <p>We have the freedom to act according to our desires and reasoning.</p>
+                            </div>
+                            <div class="quote-bubble compatibilist-bubble bg-emerald-50 p-4 mt-6">
+                                <p class="font-medium">Moral Responsibility</p>
+                                <p>Responsibility depends on acting according to one's character, not on uncaused actions.</p>
+                            </div>
+                            <div class="quote-bubble compatibilist-bubble bg-emerald-50 p-4 mt-6">
+                                <p class="font-medium">Definition of Free Will</p>
+                                <p>Free will should be defined in terms of absence of coercion, not absence of causation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="thinkers" class="tab-content p-6 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-indigo-700">Libertarian Thinkers</h4>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Jean-Paul_Sartre_1965.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Jean-Paul Sartre</p>
+                                    <p class="text-sm text-gray-600">Existentialist philosopher who emphasized radical freedom</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Immanuel_Kant_%28painted_portrait%29.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Immanuel Kant</p>
+                                    <p class="text-sm text-gray-600">Argued for transcendental freedom in the noumenal world</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Thomas_Reid_by_Henry_Raeburn.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Thomas Reid</p>
+                                    <p class="text-sm text-gray-600">Scottish philosopher who defended common sense free will</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-gray-700">Determinist Thinkers</h4>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Baruch_Spinoza.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Baruch Spinoza</p>
+                                    <p class="text-sm text-gray-600">Argued that free will is an illusion in a deterministic universe</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Laplace.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Pierre-Simon Laplace</p>
+                                    <p class="text-sm text-gray-600">Proposed the demon thought experiment showing perfect determinism</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Samuel_Butler_%281835-1902%29.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Sam Harris</p>
+                                    <p class="text-sm text-gray-600">Contemporary neuroscientist arguing against free will</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-emerald-700">Compatibilist Thinkers</h4>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/David_Hume.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">David Hume</p>
+                                    <p class="text-sm text-gray-600">Argued that free will is compatible with causal determinism</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Daniel_Dennett_2010.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Daniel Dennett</p>
+                                    <p class="text-sm text-gray-600">Contemporary philosopher defending compatibilism</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Thomas_Hobbes_%28portrait%29.jpg" class="w-16 h-16 rounded-full object-cover mr-4">
+                                <div>
+                                    <p class="font-bold">Thomas Hobbes</p>
+                                    <p class="text-sm text-gray-600">Early proponent of compatibilist views on free will</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Quiz -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-12">
+            <div class="bg-indigo-600 text-white p-6">
+                <h3 class="text-2xl font-bold flex items-center">
+                    <i class="fas fa-question-circle mr-3"></i> Which Philosophy Aligns With Your Views?
+                </h3>
+                <p class="mt-2 opacity-90">Take this short quiz to discover whether your beliefs lean toward libertarianism, determinism, or compatibilism</p>
+            </div>
+            <div class="p-6">
+                <div id="quiz-container">
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium mb-4">1. When making a difficult decision, you believe:</h4>
+                        <div class="space-y-3">
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q1" value="libertarian" class="mr-3">
+                                <span>You could have chosen differently under the exact same circumstances</span>
+                            </label>
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q1" value="determinist" class="mr-3">
+                                <span>Your choice was the inevitable result of your genetics, upbringing, and current situation</span>
+                            </label>
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q1" value="compatibilist" class="mr-3">
+                                <span>You made the choice freely because it aligned with your desires and reasoning</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium mb-4">2. Regarding moral responsibility:</h4>
+                        <div class="space-y-3">
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q2" value="libertarian" class="mr-3">
+                                <span>People deserve praise or blame for their actions because they freely chose them</span>
+                            </label>
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q2" value="determinist" class="mr-3">
+                                <span>Praise and blame are just ways to influence future behavior in a determined system</span>
+                            </label>
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q2" value="compatibilist" class="mr-3">
+                                <span>People are responsible when they act according to their character without coercion</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium mb-4">3. Your view of the future is:</h4>
+                        <div class="space-y-3">
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q3" value="libertarian" class="mr-3">
+                                <span>Open and shaped by free choices that haven't been made yet</span>
+                            </label>
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q3" value="determinist" class="mr-3">
+                                <span>Fixed and theoretically knowable if we had complete knowledge of the present</span>
+                            </label>
+                            <label class="flex items-center bg-gray-50 p-3 rounded-lg cursor-pointer hover:bg-gray-100">
+                                <input type="radio" name="q3" value="compatibilist" class="mr-3">
+                                <span>Determined but still meaningful because our choices reflect our values</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button onclick="calculateResults()" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition w-full">
+                        <i class="fas fa-poll mr-2"></i>See My Results
+                    </button>
+                </div>
+                
+                <div id="quiz-results" class="hidden text-center py-8">
+                    <div class="max-w-md mx-auto">
+                        <div id="result-icon" class="text-6xl mb-4 animate-pulse-slow"></div>
+                        <h3 id="result-title" class="text-2xl font-bold mb-2"></h3>
+                        <p id="result-description" class="text-gray-700 mb-6"></p>
+                        <button onclick="resetQuiz()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition">
+                            <i class="fas fa-redo mr-2"></i>Take Again
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Further Reading -->
+        <div class="bg-indigo-50 rounded-xl p-6">
+            <h3 class="text-2xl font-bold text-indigo-800 mb-4 flex items-center">
+                <i class="fas fa-book-open mr-3"></i> Further Exploration
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-2">Free Will by Sam Harris</h4>
+                    <p class="text-sm text-gray-600">A contemporary neuroscientific critique of free will</p>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-2">Critique of Pure Reason</h4>
+                    <p class="text-sm text-gray-600">Kant's foundational work on transcendental freedom</p>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-2">Freedom Evolves</h4>
+                    <p class="text-sm text-gray-600">Daniel Dennett's defense of compatibilism</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold">Philosophy Explorer</h3>
+                    <p class="text-gray-400">Created by Kushal Adhikari</p>
+                    <p class="text-gray-400">kushaladhikari528@gmail.com</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/Kushal-Adhikari" target="_blank" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>© 2023 Philosophy Explorer. All rights reserved. Created for educational purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function changeTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('tab-active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            // Add active class to clicked button
+            event.currentTarget.classList.add('tab-active');
+        }
+        
+        function calculateResults() {
+            const answers = {
+                q1: document.querySelector('input[name="q1"]:checked')?.value,
+                q2: document.querySelector('input[name="q2"]:checked')?.value,
+                q3: document.querySelector('input[name="q3"]:checked')?.value
+            };
+            
+            if (!answers.q1 || !answers.q2 || !answers.q3) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+            
+            // Count answers
+            let libertarianCount = 0;
+            let deterministCount = 0;
+            let compatibilistCount = 0;
+            
+            Object.values(answers).forEach(answer => {
+                if (answer === 'libertarian') libertarianCount++;
+                if (answer === 'determinist') deterministCount++;
+                if (answer === 'compatibilist') compatibilistCount++;
+            });
+            
+            // Show results
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+            
+            const resultIcon = document.getElementById('result-icon');
+            const resultTitle = document.getElementById('result-title');
+            const resultDescription = document.getElementById('result-description');
+            
+            // Determine which count is highest
+            const maxCount = Math.max(libertarianCount, deterministCount, compatibilistCount);
+            const isTie = [libertarianCount, deterministCount, compatibilistCount].filter(count => count === maxCount).length > 1;
+            
+            if (isTie) {
+                resultIcon.innerHTML = '<i class="fas fa-balance-scale text-yellow-500"></i>';
+                resultTitle.textContent = 'You Have Mixed Views!';
+                resultDescription.textContent = 'Your answers show a balance between different perspectives on free will. You might find value in compatibilist views that attempt to reconcile libertarian and determinist positions.';
+            } else if (libertarianCount === maxCount) {
+                resultIcon.innerHTML = '<i class="fas fa-dove text-indigo-600"></i>';
+                resultTitle.textContent = 'You Lean Libertarian!';
+                resultDescription.textContent = 'Your answers suggest you believe in free will and that individuals have genuine choice in their actions. You likely think people are morally responsible for their decisions because they could have chosen differently.';
+            } else if (deterministCount === maxCount) {
+                resultIcon.innerHTML = '<i class="fas fa-cogs text-gray-600"></i>';
+                resultTitle.textContent = 'You Lean Determinist!';
+                resultDescription.textContent = 'Your answers suggest you believe all events, including human decisions, are determined by prior causes. You likely see free will as an illusion, though you might still believe in some form of moral responsibility (compatibilism).';
+            } else {
+                resultIcon.innerHTML = '<i class="fas fa-handshake text-emerald-600"></i>';
+                resultTitle.textContent = 'You Lean Compatibilist!';
+                resultDescription.textContent = 'Your answers suggest you believe free will and determinism can coexist. You likely think people can be free and morally responsible even if their actions are determined by their character and desires.';
+            }
+        }
+        
+        function resetQuiz() {
+            // Uncheck all radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            
+            // Hide results and show quiz again
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
